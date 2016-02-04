@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Angular Metar Check</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/checkmetarctrl-controller.js"></script>
+        <script src="js/checkmetar-directive.js"></script>
+
+    </head> 
+    <body ng-app='metarapp'>
+
+        <div ng-controller="checkmetarctrl" class="container">
+          <div class="well well-sm"><h2  align="center">Welcome to our Angular METAR Check</h2>
+          <a href="http://www.airport-technology.com/icao-codes/S.html" target="_blank">There's a list here</a>
+          </div>
+
+          <div class="col-xs-4">
+            <label for="ex1">Aiport ICAO</label>
+            <input class="form-control" checkmetar type="text" name="icaoinput"  ng-minlength="4" ng-maxlength="4" ng-model='icao.airport_icao' placeholder="Please type the Aiport ICAO ex: SBCF">
+          </div>
+       
+          <br /><br /><br />
+
+
+        <ul  class="list-group">
+        <h2 ng-show="allmetarinfo" class="bg-primary">Metar for: {{allmetarinfo.Station}} at : {{allmetarinfo.Time}}</h2>
+         <li  ng-repeat="(key, value) in allmetarinfo" class="list-group-item">
+          <span class=" list-group-item list-group-item-success badge">{{value}}</span> {{key}} </li> 
+           </ul>
+        </div>   
+    </body>
+</html>
